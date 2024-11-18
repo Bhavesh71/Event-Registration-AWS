@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+
+<body>
+    <!-- Header with Logo and Title -->
+    <header class="header">
+        <img src="{{ url_for('static', filename='images/vit-new-logo-24-light-.png') }}" alt="University Logo"
+            class="logo">
+        <h3>VIT Chennai Event Registration</h3>
+    </header>
+
+    <!-- Login Container -->
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <script>
+            alert("{{ messages[0] }}");
+        </script>
+        {% endif %}
+        {% endwith %}
+
+        <!-- Role Selection -->
+        <div id="role-selection">
+            <h2>Select Login Type</h2>
+            <button onclick="showLoginForm('admin')">Admin</button>
+            <button onclick="showLoginForm('student')">Student</button>
+        </div>
+
+        <!-- Admin Login Form -->
+        <div id="admin-login" class="hidden">
+            <h2>Admin Login</h2>
+            <form action="{{ url_for('login_post') }}" method="POST">
+                <input type="hidden" name="role" value="admin">
+                <input type="text" name="username" placeholder="Admin Username" required><br>
+                <input type="password" name="password" placeholder="Password" required><br>
+                <input type="submit" value="Login">
+            </form>
+            <button onclick="goBack()">Go Back</button>
+        </div>
+
+        <!-- Student Login Form -->
+        <div id="student-login" class="hidden">
+            <h2>Student Login</h2>
+            <form action="{{ url_for('login_post') }}" method="POST">
+                <input type="hidden" name="role" value="student">
+                <input type="text" name="username" placeholder="Student Username" required><br>
+                <input type="password" name="password" placeholder="Password" required><br>
+                <input type="submit" value="Login">
+            </form>
+            <p>Don't have an account? <a href="{{ url_for('register') }}">Register</a></p>
+            <button onclick="goBack()">Go Back</button>
+        </div>
+    </div>
+
+    <script>
+        function showLoginForm(role) {
+            document.getElementById('role-selection').classList.add('hidden');
+            if (role === 'admin') {
+                document.getElementById('admin-login').classList.remove('hidden');
+            } else if (role === 'student') {
+                document.getElementById('student-login').classList.remove('hidden');
+            }
+        }
+
+        function goBack() {
+            document.getElementById('role-selection').classList.remove('hidden');
+            document.getElementById('admin-login').classList.add('hidden');
+            document.getElementById('student-login').classList.add('hidden');
+        }
+    </script>
+</body>
+
+</html>

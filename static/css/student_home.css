@@ -1,0 +1,785 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Ruda:wght@400;600;700&display=swap");
+
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f3f4f6;
+    color: #333;
+}
+
+/* Header Styles */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #1C342C;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.header-container #logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    transition: color 0.3s ease;
+}
+
+.header-container #logo img {
+    width: 100px;
+    /* Adjust the width of the logo image */
+    height: auto;
+    /* Maintain aspect ratio */
+    transition: width 0.3s ease;
+}
+
+.header-container #logo:hover {
+    color: #84AF78;
+}
+
+.header-container .title {
+    font-size: 32px;
+    font-weight: 900;
+    text-align: center;
+    flex: 1;
+}
+
+.header-container #login {
+    font-size: 18px;
+    font-weight: 500;
+    background: linear-gradient(145deg, #84AF78, #6F866C);
+    color: white;
+    padding: 12px 28px;
+    border-radius: 25px;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease, background-color 0.3s ease;
+}
+
+.header-container #login:hover {
+    background: rgba(111, 134, 108, 0.7);
+    /* Semi-transparent background */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+}
+
+.header-container #login:active {
+    background: rgba(90, 112, 85, 0.9);
+    /* Slightly less transparent when active */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+}
+
+.header-container #login:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(134, 172, 138, 0.5);
+}
+
+
+/* User Actions Dropdown */
+/* User Actions Dropdown */
+.user-actions {
+    position: relative;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: white;
+    padding: 0;
+    max-width: 100%;
+    /* Allow the container to take full width */
+}
+
+.dropdown-toggle .profile-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-left: 10px;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.dropdown-toggle:hover .profile-icon {
+    box-shadow: none;
+    /* Remove box shadow on hover */
+    transform: none;
+    /* No transformation */
+}
+
+/* Adjusts the dropdown-content based on toggle width */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #fff;
+    min-width: 160px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    background-color: white;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(111, 134, 108, 0.7);
+    color: white;
+}
+
+.dropdown-content a:active {
+    background-color: rgba(90, 112, 85, 0.9);
+}
+
+/* Show dropdown when .show class is added */
+.dropdown.show .dropdown-content {
+    display: block;
+}
+
+/* Ensure the username wraps if necessary */
+.dropdown-toggle span {
+    white-space: normal;
+    /* Allow username to wrap to the next line */
+    max-width: 100%;
+    overflow: visible;
+    text-overflow: clip;
+    /* Ensure no truncation */
+}
+
+/* Remove button background hover effects */
+.dropdown-toggle:hover {
+    background-color: transparent;
+    /* No background color */
+}
+
+
+
+/* Navigation Bar Styles */
+/* Navigation Bar Styles */
+.navbar-container {
+    display: flex;
+    justify-content: center;
+    background-color: #1C342C;
+    padding: 15px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-container li {
+    margin: 0 15px;
+    position: relative;
+}
+
+.navbar-container a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 8px 15px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-container a:hover {
+    background-color: #6F866C;
+    color: white;
+}
+
+.navbar-container .active {
+    background-color: #6F866C;
+}
+
+/* Dropdown Button Styles */
+.clubs-dropdown .dropbtn {
+    background-color: #1C342C;
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    padding: 8px 15px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.clubs-dropdown .dropbtn:hover {
+    background-color: #6F866C;
+}
+
+.clubs-dropdown .dropbtn:after {
+    content: '▼';
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+.clubs-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 10px;
+    padding: 10px;
+    top: 100%;
+    left: 0;
+}
+
+.clubs-dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s ease;
+}
+
+.clubs-dropdown-content a:hover {
+    background-color: #eaeaea;
+    color: black;
+}
+
+.clubs-dropdown:hover .clubs-dropdown-content {
+    display: block;
+}
+
+
+/* Banner Section */
+.banner-container {
+    position: relative;
+    /* margin-top: 53px; */
+    /* Set margin top */
+    border-top: 1px solid rgb(198, 198, 198);
+    /* Top border */
+    border-bottom: 1px solid rgb(198, 198, 198);
+    /* Bottom border */
+    box-shadow: 0 4px 32px rgb(198, 198, 198);
+    /* Box shadow effect */
+    width: 100%;
+    /* Full width of the container */
+    height: 300px;
+    /* Set height as specified */
+    text-align: center;
+    /* Center-align text */
+    font-family: 'Roboto', sans-serif;
+    /* Font family */
+    color: rgb(48, 48, 48);
+    /* Text color */
+    user-select: none;
+    /* Disable text selection */
+    overflow: hidden;
+    /* Prevent content overflow */
+}
+
+.banner-container::before {
+    content: "";
+    /* Create a pseudo-element for the background */
+    position: absolute;
+    /* Position it absolutely within the container */
+    top: 0;
+    /* Align to the top */
+    left: 0;
+    /* Align to the left */
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    background-image: url('/static/images/banner.jpg');
+    /* Background image for pseudo-element */
+    background-repeat: repeat;
+    /* Allow background to repeat */
+    background-size: 25%;
+    /* Set the background image size */
+    opacity: 0.2;
+    /* Set the desired opacity for the background */
+    z-index: -1;
+    /* Ensure it's behind the content */
+}
+
+
+/* Banner Content */
+.banner-content {
+    width: calc(100% - 20px);
+    padding: 30px;
+    margin: 0 10px;
+    border-radius: 15px;
+    /* box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); */
+    /* background-color: #fff; */
+    /* Solid background for clarity */
+    color: rgb(48, 48, 48);
+    /* Dark text for readability */
+    box-sizing: border-box;
+}
+
+.banner-content h1 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-top: -17px;
+}
+
+.banner-content span {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.banner-content button {
+    padding: 12px 24px;
+    background-color: #007bff;
+    /* Primary color for a professional look */
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.banner-content button:hover {
+    background-color: #0056b3;
+    /* Darker shade on hover */
+    transform: scale(1.05);
+}
+
+.banner-content button:active {
+    transform: scale(1.02);
+    background-color: #004494;
+}
+
+.banner-content button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+
+/* Carousel Container */
+/* Carousel Container */
+#carousel {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    /* Adjust width as necessary */
+    margin: auto;
+    /* margin-top: 0px; */
+    overflow: hidden;
+    border-radius: 10px;
+    /* Rounded corners */
+}
+
+/* Image Box */
+.img-box {
+    position: relative;
+    /* margin-top: 0px; */
+    display: flex;
+    /* Use flexbox for alignment */
+    justify-content: center;
+    /* height: 100px; */
+    /* Center the images */
+}
+
+/* Images */
+.cimg {
+    /* width: 200px; */
+    /* Set a target width for the images */
+    height: 70px;
+    /* Set a target height for the images */
+    display: none;
+    /* Initially hide all images */
+    margin: 0;
+    /* Remove margin between images */
+    /* object-fit: cover; */
+    /* Maintain aspect ratio and cover the box */
+}
+
+.cimg:first-child {
+    display: block;
+    /* Show the first image initially */
+}
+
+/* Text Box */
+.text-box {
+    text-align: center;
+    /* Center the text */
+    margin-top: 10px;
+    /* Space between image and text */
+}
+
+/* Text */
+.ctext {
+    display: none;
+    /* Initially hide all text */
+    color: black;
+    /* Text color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    /* Shadow for better readability */
+    font-size: 1 em;
+    /* Adjust font size */
+}
+
+.ctext:first-child {
+    display: block;
+    /* Show the first text initially */
+}
+
+/* Indicators */
+.indicators {
+    text-align: center;
+    margin-top: 15px;
+    /* Space above indicators */
+}
+
+/* Dots */
+.dot {
+    display: inline-block;
+    width: 10px;
+    /* Size of the dots */
+    height: 10px;
+    margin: 0 5px;
+    /* Space between dots */
+    background-color: gray;
+    /* Inactive dot color */
+    border-radius: 50%;
+    /* Round dots */
+    cursor: pointer;
+    /* Pointer cursor for interactivity */
+    transition: background-color 0.3s ease;
+    /* Smooth transition */
+}
+
+.dot.on {
+    background-color: #007bff;
+    /* Active dot color */
+}
+
+.dot:hover {
+    background-color: #0056b3;
+    /* Hover effect */
+}
+
+/* adminhome.css */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f8f8f8;
+}
+
+.container {
+    padding: 20px;
+} */
+/* Style for the club search input */
+/* Search Input */
+#clubSearchInput {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f9;
+    /* Soft background color */
+    margin: 0;
+    color: #333;
+    /* Text color */
+    line-height: 1.6;
+    /* Increased line height for better readability */
+}
+
+/* Container for the Dashboard */
+.container {
+    padding: 2em;
+    background-color: #f9f9f9;
+    /* Light background for better contrast */
+    border-radius: 8px;
+    /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+}
+
+/* Headings */
+h2 {
+    font-size: 2.5em;
+    /* Large size */
+    color: #20342c;
+    /* Updated color */
+    margin-bottom: 1em;
+    text-align: center;
+    /* Centered title */
+    text-transform: uppercase;
+    /* Uppercase for emphasis */
+}
+
+.club-section {
+    margin-bottom: 2.5em;
+    /* Increased margin for separation */
+    padding: 1.5em;
+    /* Padding for inner content */
+    background-color: #d7eae2;
+    /* Light blue background */
+    border-radius: 15px;
+    /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+    transition: transform 0.2s, box-shadow 0.2s;
+    /* Smooth transition */
+}
+
+.club-section h3 {
+    font-size: 1.75em;
+    /* Club names */
+    color: #20342c;
+    /* Updated color */
+    margin-bottom: 0.5em;
+    text-align: center;
+    /* Centered club name */
+}
+
+/* Event Card Styles */
+/* Refer adminhome.css */
+/* Card Container */
+.events-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    justify-content: center;
+}
+
+/* Event Card Styles */
+.event-card {
+    background-color: #ffffff;
+    /* White background */
+    border-radius: 15px;
+    /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* Soft shadow */
+    padding: 1.5em;
+    /* Padding for inner content */
+    text-align: center;
+    width: 280px;
+    /* Increased width of cards */
+    transition: transform 0.2s, box-shadow 0.2s;
+    /* Smooth transition */
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    /* Lift effect on hover */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    /* Enhanced shadow */
+}
+
+.event-poster {
+    width: 100%;
+    /* Full width of the card */
+    height: 360px;
+    /* Height for poster dimensions */
+    border-radius: 15px;
+    /* Consistent rounded corners */
+    object-fit: cover;
+    /* Cover the entire area */
+    border: 2px solid #20342c;
+    /* Updated border color */
+    transition: border-color 0.3s;
+    /* Transition for border color */
+}
+
+
+.event-card:hover .event-poster {
+    border-color: #1a2c2a;
+    /* Darker border on hover */
+}
+
+.event-card h4 {
+    font-size: 1.4em;
+    /* Slightly larger text for event names */
+    margin-top: 0.5em;
+    color: #20342c;
+    /* Updated color */
+}
+
+/* Button Styles */
+.event-card button {
+    background-color: #20342c;
+    /* Updated color for buttons */
+    color: #fff;
+    border: none;
+    padding: 0.6em 1.4em;
+    /* More padding for better appearance */
+    border-radius: 25px;
+    /* Pill shape for buttons */
+    cursor: pointer;
+    margin: 0.5em;
+    /* Margin between buttons */
+    font-weight: bold;
+    /* Bold text */
+    transition: background-color 0.3s, transform 0.2s;
+    /* Smooth transitions */
+    font-size: 0.9em;
+    /* Consistent font size */
+}
+
+.event-card button:hover {
+    background-color: #1a2c2a;
+    /* Darker shade on hover */
+    transform: translateY(-2px);
+    /* Lift effect on hover */
+}
+
+
+/* Modal */
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 2em;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-poster {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+.event-poster {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+    max-height: 80vh;
+    border-radius: 15px;
+    object-fit: contain;
+}
+
+.modal-details {
+    color: #20342c;
+    padding: 1em 0;
+}
+
+.modal-details h2 {
+    font-size: 1.8em;
+    margin-bottom: 0.5em;
+}
+
+.modal-details p {
+    margin: 0.5em 0;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+    padding-top: 1em;
+}
+
+.register-btn,
+.cancel-btn {
+    padding: 0.6em 1.2em;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.2s;
+    border: none;
+}
+
+.register-btn {
+    background-color: #20342c;
+    color: #fff;
+}
+
+.register-btn:hover {
+    background-color: #1a2c2a;
+    transform: translateY(-2px);
+}
+
+.cancel-btn {
+    background-color: #888;
+    color: #fff;
+}
+
+.cancel-btn:hover {
+    background-color: #666;
+    transform: translateY(-2px);
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.flash-messages {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 999;
+}
+
+.flash-message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.flash-message.success {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.flash-message.danger {
+    background-color: #f44336;
+    color: white;
+}

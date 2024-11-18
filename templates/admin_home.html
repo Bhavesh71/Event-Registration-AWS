@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VIT Chennai Events</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adminhome.css') }}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> -->
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header-container">
+        <div id="logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="VIT Logo">
+        </div>
+        <div class="title">VIT EVENT REGISTRATION</div>
+        <div class="user-actions">
+            <div class="dropdown">
+                <button class="dropdown-toggle">
+                    <span>{{ username }}</span>
+                    <img src="{{ url_for('static', filename='images/profile-icon.png') }}" alt="Profile"
+                        class="profile-icon">
+                    <!-- <span>{{ username }}</span> -->
+                </button>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('add_admin') }}">Add Admin</a>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar-container">
+        <ul>
+            <li><a class="active" href="/">Home</a></li>
+            <!-- Clubs Dropdown Menu in Navbar -->
+            <li class="clubs-dropdown">
+                <button class="dropbtn">Clubs</button>
+                <div class="clubs-dropdown-content">
+                    <!-- Search box for clubs -->
+                    <input type="text" id="clubSearchInput" onkeyup="filterClubs()" placeholder="Search for clubs..">
+
+                    <!-- 'All' option to display all clubs' events -->
+                    <a href="#" onclick="filterEvents('all')">All</a>
+
+                    <!-- Dynamic list of clubs -->
+                    {% for item in clubs_with_events %}
+                    <a href="#" onclick="filterEvents('{{ item.club.name }}')">{{ item.club.name }}</a>
+                    {% endfor %}
+                </div>
+            </li>
+
+        </ul>
+    </nav>
+
+    <!-- Banner Section -->
+    <section class="banner-container">
+        <div id="banner">
+            <div class="background"></div>
+            <div class="banner-content">
+                <h1>Welcome to VIT Chennai Events</h1>
+                <!-- <h1>Your Gateway to Engaging Events</h1>
+                <span>Explore and register for exciting events at VIT Chennai.<br>Join us in creating memorable
+                    experiences and expanding your horizons.</span> -->
+                <a href="/add_event"><button>Add Events</button></a>
+            </div>
+            <div id="carousel">
+                <div class="img-box">
+                    <img class="cimg" id="cimg0" src="./static/images/vit-new-logo-24-.png" style="display: none;">
+                    <img class="cimg" id="cimg1" src="./static/images/vitgate.png" style="display: none;">
+                    <img class="cimg" id="cimg2" src="./static/images/vitab1.png" style="display: none;">
+                    <img class="cimg" id="cimg3" src="./static/images/cse.png" style="display: none;">
+                    <img class="cimg" id="cimg4" src="./static/images/mech.png" style="display: none;">
+                    <img class="cimg" id="cimg5" src="./static/images/eee.png" style="display: none;">
+                    <img class="cimg" id="cimg6" src="./static/images/ece.png" style="display: none;">
+                    <img class="cimg" id="cimg7" src="./static/images/fit.png" style="display: none;">
+                    <img class="cimg" id="cimg8" src="./static/images/civil.png" style="display: none;">
+                    <img class="cimg" id="cimg9" src="./static/images/mgmnt.png" style="display: block;">
+                </div>
+                <div class="text-box">
+                    <p class="ctext" id="ctext0" style="display: none;">Welcome to VITChennaiEvents.com</p>
+                    <p class="ctext" id="ctext1" style="display: none;">A place to Learn</p>
+                    <p class="ctext" id="ctext2" style="display: none;">A chance to Grow</p>
+                    <p class="ctext" id="ctext3" style="display: none;">Securing the world – bit by bit</p>
+                    <p class="ctext" id="ctext4" style="display: none;">Think big. We do.</p>
+                    <p class="ctext" id="ctext5" style="display: none;">Resourceful. Naturally.</p>
+                    <p class="ctext" id="ctext6" style="display: none;">Seeing what doesn’t exist yet. That’s our
+                        strength.</p>
+                    <p class="ctext" id="ctext7" style="display: none;">Draw on Passion</p>
+                    <p class="ctext" id="ctext8" style="display: none;">If God Didn’t Build It, An Engineer Did!</p>
+                    <p class="ctext" id="ctext9" style="display: block;">Simply certified</p>
+                </div>
+                <div class="indicators" unselectable="on" onselectstart="return false;" onmousedown="return false;">
+                    <a class="dot on" data-index="0"></a>
+                    <a class="dot" data-index="1"></a>
+                    <a class="dot" data-index="2"></a>
+                    <a class="dot" data-index="3"></a>
+                    <a class="dot" data-index="4"></a>
+                    <a class="dot" data-index="5"></a>
+                    <a class="dot" data-index="6"></a>
+                    <a class="dot" data-index="7"></a>
+                    <a class="dot" data-index="8"></a>
+                    <a class="dot" data-index="9"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <h2>Admin Dashboard</h2>
+        {% for item in clubs_with_events %}
+        <div class="club-section">
+            <h3>{{ item.club.name }}</h3>
+            <div class="events-container">
+                {% for event in item.events %}
+                <div class="event-card">
+                    <img src="{{ event.poster }}" alt="Event Poster" class="event-poster">
+                    <h4>{{ event.name }}</h4>
+                    <!-- <p>{{ event.description }}</p> -->
+                    <button onclick="openEditModal('{{ event.id }}')">Modify</button>
+                    <button onclick="deleteEvent('{{ event.id }}')">Delete</button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Edit Event Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeEditModal()">&times;</span>
+            <h2>Edit Event</h2>
+            <form id="editEventForm" onsubmit="submitEditEvent(event)">
+                <input type="hidden" id="eventId">
+                <label for="eventName">Event Name:</label>
+                <input type="text" id="eventName" required>
+                <label for="eventDescription">Description:</label>
+                <textarea id="eventDescription" required></textarea>
+                <label for="eventDate">Date:</label>
+                <input type="date" id="eventDate" required>
+                <label for="eventTime">Time:</label>
+                <input type="time" id="eventTime" required>
+                <label for="venue">Venue:</label>
+                <input type="text" id="venue" required>
+                <label for="price">Price:</label>
+                <input type="number" id="price" required>
+                <label for="numPeople">Number of People:</label>
+                <input type="number" id="numPeople" required>
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="{{ url_for('static', filename='js/adminhome.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+
+</html>

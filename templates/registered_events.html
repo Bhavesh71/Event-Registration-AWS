@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VIT Chennai Events - Registered Events</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adminhome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/student_home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/registered_event.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header-container">
+        <div id="logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="VIT Logo">
+        </div>
+        <div class="title">VIT EVENT REGISTRATION</div>
+        <div class="user-actions">
+            <div class="dropdown">
+                <button class="dropdown-toggle">
+                    <span>{{ username }}</span>
+                    <img src="{{ url_for('static', filename='images/profile-icon.png') }}" alt="Profile"
+                        class="profile-icon">
+                    <!-- <span>{{ username }}</span> -->
+                </button>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('profile') }}">Profile</a>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar-container">
+        <ul>
+            <li><a href="/">Home</a></li>
+
+
+
+        </ul>
+    </nav>
+
+
+    <div class="container">
+        <h1>Welcome, {{ username }}</h1>
+        <h2>Registered Events</h2>
+
+        {% if events %}
+        <div class="events-container">
+            {% for event in events %}
+            <div class="event-card">
+                <div class="event-header">
+                    <img src="{{ event.poster }}" alt="Event Poster" class="event-poster">
+                    <h4>{{ event.name }}</h4>
+                </div>
+                <div class="event-details">
+                    <p><i class="fas fa-calendar-alt"></i> {{ event.date }}</p>
+                    <p><i class="fas fa-clock"></i> {{ event.time }}</p>
+                    <p><i class="fas fa-map-marker-alt"></i> {{ event.venue }}</p>
+                    <p><i class="fas fa-users"></i> Max: {{ event.num_people }}</p>
+                    <p><i class="fas fa-tag"></i> Price: {{ event.price }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>You have not registered for any events yet.</p>
+        {% endif %}
+    </div>
+
+    <!-- Modal -->
+    {% for item in clubs_with_events %}
+    {% for event in item.events %}
+    <div class="modal" id="modal-{{ event.id }}">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal-{{ event.id }}')">&times;</span>
+
+            <!-- Poster Section -->
+            <div class="modal-poster">
+                <img src="{{ event.poster }}" alt="Event Poster" class="event-poster">
+            </div>
+
+            <!-- Event Details Section -->
+            <div class="modal-details">
+                <h2>{{ event.name }}</h2>
+                <p><strong>Description:</strong> {{ event.description }}</p>
+                <p><i class="fas fa-calendar-alt"></i> Date: {{ event.date }}</p>
+                <p><i class="fas fa-clock"></i> Time: {{ event.time }}</p>
+                <p><i class="fas fa-map-marker-alt"></i> Venue: {{ event.venue }}</p>
+                <p><i class="fas fa-users"></i> Max People: {{ event.num_people }}</p>
+                <p><i class="fas fa-tag"></i> Price: {{ event.price }}</p>
+            </div>
+
+
+        </div>
+    </div>
+    {% endfor %}
+    {% endfor %}
+
+    </div>
+
+
+    <script src="{{ url_for('static', filename='js/student_home.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/adminhome.js') }}"></script>
+</body>
+
+</html>

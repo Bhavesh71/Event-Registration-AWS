@@ -1,0 +1,105 @@
+/* Reset some default styles */
+body,
+h1,
+p {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Full-page container */
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: url('/static/images/bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Centered container with semi-transparent background */
+.container {
+    background: rgba(255, 255, 255, 0.1);
+    /* Add some transparency */
+    color: #fff;
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    /* Adds a nice blur effect to the container */
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"] {
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    color: #333;
+    background: rgba(255, 255, 255, 0.8);
+    text-align: center;
+}
+
+input[type="submit"] {
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    background-color: #6c5ce7;
+    /* Purple background */
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #5a4bda;
+    /* Darker purple */
+}
+
+p {
+    margin-top: 20px;
+}
+
+a {
+    color: #f1c40f;
+    /* Gold color for links */
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Flash messages styling */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+li {
+    background: #ffcccb;
+    color: #d8000c;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}

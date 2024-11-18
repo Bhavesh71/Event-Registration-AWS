@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Crop Doctor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header-container">
+        <div id="logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo">
+        </div>
+        <div class="title">CROP DOCTOR</div>
+        <div class="user-actions">
+            <div class="dropdown">
+                <button class="dropdown-toggle">
+                    <img src="{{ url_for('static', filename='images/profile-icon.png') }}" alt="Profile"
+                        class="profile-icon">
+                    <span>{{ username }}</span>
+                </button>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('profile') }}">Your Profile</a>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar-container">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/upload">Upload Image</a></li>
+            <li><a href="/chatbot">Chatbot</a></li>
+            <li class="language-dropdown">
+                <button class="dropbtn">Languages</button>
+                <div class="language-dropdown-content">
+                    <a href="/lang/english">English</a>
+                    <a href="/lang/hindi">Hindi</a>
+                    <a href="/lang/tamil">Tamil</a>
+                </div>
+            </li>
+            <li><a class="active" href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+
+
+        </ul>
+    </nav>
+
+    <!-- About Section -->
+    <section class="aboutbody">
+        <section class="about-container">
+            <h2>About Crop Doctor</h2>
+            <p>Agriculture forms the backbone of our global economy, feeding billions and providing livelihoods to
+                countless
+                people around the world. However, one of the most significant challenges faced by farmers today is the
+                threat of crop diseases. These diseases can spread rapidly, devastating entire fields and leading to
+                substantial financial losses. The timely detection and treatment of these diseases are critical to
+                ensuring
+                healthy crop yields and minimizing the economic impact on farmers.</p>
+
+            <p><strong>Crop Doctor</strong> is an innovative AI-driven solution designed to address this pressing issue.
+                Our
+                platform harnesses the power of machine learning to analyze crop images and environmental data, enabling
+                the
+                early detection of potential disease outbreaks. By providing farmers with real-time insights and
+                actionable
+                treatment recommendations, Crop Doctor empowers them to take proactive measures to protect their crops
+                and
+                livelihoods.</p>
+
+            <h3>Key Features:</h3>
+            <ul>
+                <li><strong>AI-Driven Disease Identification:</strong> Crop Doctor utilizes advanced machine learning
+                    algorithms to analyze images of crops and identify potential diseases. By leveraging a vast dataset
+                    of
+                    crop images and disease patterns, our system can accurately diagnose a wide range of plant diseases,
+                    ensuring that farmers receive timely and accurate information.</li>
+                <li><strong>Environmental Data Integration:</strong> Understanding that crop health is influenced by
+                    environmental factors such as temperature, humidity, and soil conditions, Crop Doctor integrates
+                    real-time environmental data into its analysis. This allows the system to provide more accurate
+                    predictions and recommendations tailored to the specific conditions of each farm.</li>
+                <li><strong>Real-Time Alerts and Notifications:</strong> Farmers receive instant notifications when a
+                    potential disease threat is detected. These alerts are accompanied by detailed information about the
+                    disease, its potential impact, and recommended treatment options, enabling farmers to act swiftly
+                    and
+                    effectively.</li>
+                <li><strong>Customized Treatment Recommendations:</strong> Crop Doctor goes beyond mere identification
+                    by
+                    offering tailored treatment plans based on the specific disease and environmental conditions. These
+                    recommendations are designed to be practical and actionable, ensuring that farmers can implement
+                    them
+                    with ease.</li>
+                <li><strong>Mobile and Web Accessibility:</strong> Recognizing the importance of accessibility, Crop
+                    Doctor
+                    is available as both a mobile and web-based application. Farmers can access the platform from their
+                    smartphones, tablets, or computers, allowing them to monitor their crops and receive updates from
+                    anywhere, at any time.</li>
+                <li><strong>User-Friendly Interface:</strong> The platform is designed with farmers in mind, featuring
+                    an
+                    intuitive and easy-to-navigate interface. Whether it's uploading crop images, viewing environmental
+                    data, or accessing treatment recommendations, every aspect of Crop Doctor is built to provide a
+                    seamless
+                    user experience.</li>
+                <li><strong>Continuous Learning and Improvement:</strong> As more farmers use the platform and
+                    contribute
+                    data, Crop Doctor's machine learning algorithms continue to improve. The system learns from every
+                    interaction, refining its disease identification capabilities and enhancing the accuracy of its
+                    predictions and recommendations.</li>
+            </ul>
+
+            <h3>Impact on Agriculture:</h3>
+            <p>The introduction of Crop Doctor represents a significant step forward in the fight against crop diseases.
+                By
+                enabling early detection and providing actionable insights, the platform helps farmers reduce crop
+                losses,
+                improve yields, and enhance the overall sustainability of their operations. In addition, the use of AI
+                and
+                real-time data analysis ensures that farmers are equipped with the latest knowledge and tools to combat
+                emerging threats.</p>
+
+            <p>As we look to the future, Crop Doctor aims to expand its capabilities, incorporating additional features
+                such
+                as pest identification, soil health monitoring, and crop yield forecasting. By continuing to innovate
+                and
+                adapt to the evolving needs of the agricultural sector, Crop Doctor is committed to playing a vital role
+                in
+                securing the future of farming.</p>
+
+            <h3>Our Mission:</h3>
+            <p>At Crop Doctor, our mission is to empower farmers with the knowledge and tools they need to protect their
+                crops and livelihoods. We believe that by leveraging the latest advancements in AI and data science, we
+                can
+                create solutions that not only address current challenges but also pave the way for a more resilient and
+                sustainable agricultural future.</p>
+
+            <p><b>Join us in our journey to revolutionize crop disease management and ensure a brighter, healthier
+                    future
+                    for
+                    farmers worldwide.</b></p>
+        </section>
+    </section>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/toggleprofile.js') }}"></script>
+</body>
+
+</html>

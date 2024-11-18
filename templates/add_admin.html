@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VIT Chennai Events - Add Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adminhome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/add_admin.css') }}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> -->
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header-container">
+        <div id="logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="VIT Logo">
+        </div>
+        <div class="title">VIT EVENT REGISTRATION</div>
+        <div class="user-actions">
+            <div class="dropdown">
+                <button class="dropdown-toggle">
+                    <span>{{ username }}</span>
+                    <img src="{{ url_for('static', filename='images/profile-icon.png') }}" alt="Profile"
+                        class="profile-icon">
+                    <!-- <span>{{ username }}</span> -->
+                </button>
+                <div class="dropdown-content">
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar-container">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <!-- Clubs Dropdown Menu in Navbar -->
+
+            </li>
+
+        </ul>
+    </nav>
+
+    <div class="bodyad">
+        <div class="container">
+            <h2>Add New Admin</h2>
+            <form method="POST">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+                <button type="button" onclick="showModal()">Add</button>
+
+                <!-- Hidden input to submit current admin password for authorization -->
+                <input type="hidden" id="currentAdminPassword" name="currentAdminPassword" value="">
+            </form>
+        </div>
+
+        <!-- Modal for current admin password authentication -->
+        <div id="authModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h3>Authorization Required</h3>
+                <label for="currentAdminPasswordInput">Enter Current Admin Password</label>
+                <input type="password" id="currentAdminPasswordInput" required>
+                <button onclick="authorize()">Authorize</button>
+            </div>
+        </div>
+
+    </div>
+    <script src="{{ url_for('static', filename='js/adminhome.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/add_admin.js') }}"></script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Your Profile</h1>
+        <form action="{{ url_for('profile') }}" method="post">
+            <label for="name">Name:</label>
+            <input type="text" name="name" value="{{ user.name }}" required>
+
+            <label for="age">Age:</label>
+            <input type="number" name="age" value="{{ user.age }}" required>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" value="{{ user.email }}" required>
+
+            <label for="mobile">Mobile:</label>
+            <input type="text" name="mobile" value="{{ user.mobile }}" required>
+
+            <input type="submit" value="Update Profile">
+        </form>
+        <br>
+        <br>
+        <h1>Change Password</h1>
+        <form action="{{ url_for('change_password') }}" method="post">
+            <input type="password" name="old_password" placeholder="Old Password" required>
+            <input type="password" name="new_password" placeholder="New Password" required>
+            <input type="password" name="confirm_new_password" placeholder="Confirm New Password" required>
+            <input type="submit" value="Change Password">
+        </form>
+
+        <br><br>
+
+        <div class="button-container">
+            <a href="{{ url_for('home') }}" class="back-home-button">Back Home</a>
+            <a href="{{ url_for('logout') }}" class="back-home-button">Logout</a>
+        </div>
+    </div>
+</body>
+
+</html>
